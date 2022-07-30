@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: leetcode-info
+  redis:
+    port: 6379
+    database: 0
+    timeout: 36000
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ys_local?useUnicode=true&characterEncoding=utf-8&useSSL=false&&serverTimezone=Asia/Shanghai&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: root
+server:
+  port: 8888
+my-webclient:
+  enableJavaScript: true
+  enableCss: true
+  version:
+
