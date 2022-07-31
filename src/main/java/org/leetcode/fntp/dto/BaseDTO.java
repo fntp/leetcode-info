@@ -16,10 +16,9 @@ import java.util.Date;
  */
 @Data
 @ToString
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class BaseDTO implements Serializable {
+public class BaseDTO implements Serializable {
 
     private static final long serialVersionUID = -6822097880324688074L;
     /**

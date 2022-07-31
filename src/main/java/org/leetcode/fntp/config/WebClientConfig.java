@@ -17,12 +17,10 @@ public class WebClientConfig {
     /**
      * 允许开放JavaScript
      */
-    @Value ("$enableJavaScript")
     private Boolean enableJavaScript;
     /**
      * 允许开放css
      */
-    @Value ("$enableCss")
     private Boolean enableCss;
 
 }
