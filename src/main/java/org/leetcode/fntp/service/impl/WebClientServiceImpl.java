@@ -31,6 +31,7 @@ public class WebClientServiceImpl implements IWebClientService {
 
     @Override
     public String getUserInfoByDomainPageUrl(String domainPageUrl) {
+
         return null;
     }
 }

@@ -19,4 +19,13 @@ my-webclient:
   enableJavaScript: true
   enableCss: true
   version:
+mybatis-plus:
+  mapper-locations: org.leetcode.fntp.mapper
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isEnable
+      logic-not-delete-value: 1
+      logic-delete-value: 0
 
