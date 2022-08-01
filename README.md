@@ -17,3 +17,6 @@ Aims to build a force buckle brush question detection system
 （2）Http配置
 （3）新增工具类
 
+0006 新增力扣关键接口配置
+（1）增加封装的dto对象
+（2）增加业务逻辑service代码
