@@ -18,7 +18,6 @@ server:
 my-webclient:
   enableJavaScript: true
   enableCss: true
-  version:
 mybatis-plus:
   mapper-locations: org.leetcode.fntp.mapper
   configuration:
