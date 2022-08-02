@@ -46,3 +46,9 @@ Aims to build a force buckle brush question detection system
 <p>（5）增加用户刷题荣誉等级接口</p>
 <p>（6）增加用户刷题击败用户接口</p>
 <p>（7）补全prop-test本地服务配置</p>
+
+**0008 新增力扣服务** **2022-08-03**
+<p>（1）新增leetcode-controller</p>
+<p>（2）新增service服务代码</p>
+<p>（3）新增接口规范VO</p>
+<p>（4）修改接口映射规范</p>
