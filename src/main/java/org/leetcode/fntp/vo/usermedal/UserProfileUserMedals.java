@@ -1,8 +1,10 @@
 package org.leetcode.fntp.vo.usermedal;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
@@ -17,6 +19,8 @@ import java.util.Date;
 @Builder
 @EqualsAndHashCode
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserProfileUserMedals implements Serializable {
     private static final long serialVersionUID = -3265266951569591982L;
     private String name;

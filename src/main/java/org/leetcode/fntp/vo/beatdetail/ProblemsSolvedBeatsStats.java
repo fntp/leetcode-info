@@ -1,8 +1,10 @@
 package org.leetcode.fntp.vo.beatdetail;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
@@ -29,6 +31,8 @@ import java.io.Serializable;
 @Builder
 @EqualsAndHashCode
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProblemsSolvedBeatsStats implements Serializable {
     private static final long serialVersionUID = -7798163389244989527L;
     private String difficulty;

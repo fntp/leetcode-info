@@ -1,8 +1,10 @@
 package org.leetcode.fntp.vo.recentlyexercise;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import java.io.Serializable;
 
@@ -15,6 +17,8 @@ import java.io.Serializable;
 @Builder
 @EqualsAndHashCode
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Question implements Serializable {
     private static final long serialVersionUID = 4765681626930651109L;
     /**

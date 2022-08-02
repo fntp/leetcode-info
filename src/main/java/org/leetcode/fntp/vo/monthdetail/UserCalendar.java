@@ -1,8 +1,10 @@
 package org.leetcode.fntp.vo.monthdetail;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
@@ -16,6 +18,8 @@ import java.io.Serializable;
 @Builder
 @EqualsAndHashCode
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserCalendar implements Serializable {
     private static final long serialVersionUID = 1543792019235462582L;
     private int streak;
