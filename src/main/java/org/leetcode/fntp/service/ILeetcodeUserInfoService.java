@@ -1,11 +1,12 @@
 package org.leetcode.fntp.service;
 
 import org.leetcode.fntp.dto.baseinfo.UserProfilePublicProfile;
+import org.leetcode.fntp.dto.beatdetail.ProblemsSolvedBeatsStats;
+import org.leetcode.fntp.dto.levelmedal.UserProfileUserLevelMedal;
 import org.leetcode.fntp.dto.questiondetail.UserProfileUserQuestionProgress;
 import org.leetcode.fntp.dto.recentlyexercise.RecentAcSubmissions;
 import org.leetcode.fntp.dto.uselanguage.UserLanguageProblemCount;
 import org.leetcode.fntp.model.BaseResult;
-
 import java.util.List;
 
 /**
@@ -43,4 +44,17 @@ public interface ILeetcodeUserInfoService {
      */
     BaseResult<UserProfileUserQuestionProgress> getUserQuestionsDetailByUserSlug(String userSlug);
 
+    /**
+     * 获得用户刷题击败其他用户详情
+     * @param userSlug 用户标记
+     * @return 返回一个详情结果
+     */
+    BaseResult<List<ProblemsSolvedBeatsStats>> getUserExerciseBeatDetails(String userSlug);
+
+    /**
+     * 根据用户标记获得用户刷题级别荣誉详情
+     * @param userSlug 用户标记
+     * @return 返回一个详情结果
+     */
+    BaseResult<UserProfileUserLevelMedal> getUserLevelMedalDetail(String userSlug);
 }
