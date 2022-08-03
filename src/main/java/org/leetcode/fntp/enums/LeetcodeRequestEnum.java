@@ -1,6 +1,7 @@
 package org.leetcode.fntp.enums;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 /**
  * -------------------------------------------------------------------------------
@@ -23,7 +24,8 @@ import lombok.ToString;
 @Getter
 @ToString
 @AllArgsConstructor
-public enum LeetcodeRequestTypeEnum {
+@NoArgsConstructor
+public enum LeetcodeRequestEnum {
     /**
      * 获得用户最近刷题记录
      */
@@ -77,7 +79,13 @@ public enum LeetcodeRequestTypeEnum {
      * （13）第十三种业务：拿到已登录用户的accountId与Token
      * 获得当前用户对应的token，根据Cookie获得token与accountId
      */
-    REQUEST_USER_TOKEN("query getCurrentUserIM { getCurrentUserIM { accId token unread}}",12);
+    REQUEST_USER_TOKEN("query getCurrentUserIM { getCurrentUserIM { accId token unread}}",12),
+    /**
+     *  获得用户最近刷题记录的URL请求地址
+     */
+    REQUEST_RECENTLY_EXERCISES_URL("https://leetcode.cn/graphql/noj-go"),
+
+    ;
     /**
      * 内容
      */
@@ -86,5 +94,13 @@ public enum LeetcodeRequestTypeEnum {
      * 请求类型
      */
     private Integer type;
+
+    /**
+     * 单参数构造
+     * @param value 构造函数传参
+     */
+    LeetcodeRequestEnum(String value){
+        this.value = value;
+    }
 
 }

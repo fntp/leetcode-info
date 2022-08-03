@@ -59,3 +59,6 @@ Aims to build a force buckle brush question detection system
 
 **0010 新增全局日志服务** **2022-08-03**
 <p>（1）新增全局日志服务</p>
+
+**0011 新增异常处理配置** **2022-08-03**
+<p>（1）新增异常处理配置</p>

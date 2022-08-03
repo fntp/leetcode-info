@@ -1,9 +1,16 @@
 package org.leetcode.fntp.service.impl;
 
-import org.leetcode.fntp.mapper.IUserInfoMapper;
+import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
+import org.leetcode.fntp.common.BaseException;
+import org.leetcode.fntp.common.CodeEnum;
+import org.leetcode.fntp.enums.LeetcodeRequestEnum;
 import org.leetcode.fntp.model.BaseResult;
 import org.leetcode.fntp.service.ILeetcodeUserInfoService;
 import org.leetcode.fntp.service.ILogService;
+import org.leetcode.fntp.utils.HttpUtil;
 import org.leetcode.fntp.vo.baseinfo.LcUserBaseInfoDetail;
 import org.leetcode.fntp.vo.beatdetail.LcUserBeatDetail;
 import org.leetcode.fntp.vo.followcount.LcUserFollowDetail;
@@ -18,9 +25,16 @@ import org.leetcode.fntp.vo.uselanguage.LcUserLanguageCountDetail;
 import org.leetcode.fntp.vo.usermedal.LcUserMedalInfoDetail;
 import org.leetcode.fntp.vo.willachieve.LcUserWillAchieveGoalDetail;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 /**
  * @author fntp
@@ -28,24 +42,49 @@ import java.util.List;
  * @date 2022/8/3 0:31
  */
 @Service("leetcodeUserInfoServiceImpl")
+@Slf4j
 public class LeetcodeUserInfoServiceImpl implements ILeetcodeUserInfoService {
 
     @Resource
     private ILogService logService;
 
-    @Resource
-    private IUserInfoMapper userInfoMapper;
-
     /**
      * 获得用户最近刷题记录的接口
-     *
      * @param userSlug 传入一个用户标记
      * @return 返回一个用户刷题记录
      */
     @Override
-    public BaseResult<List<LcUserRecentlyExerciseDetail>> getLeetcodeUserRecentlyExercisesInfo(String userSlug) {
-        var scx = "a";
-        return null;
+    public BaseResult<LcUserRecentlyExerciseDetail> getLeetcodeUserRecentlyExercisesInfo(String userSlug) {
+        try {
+            // 组装请求体
+            JSONObject requestJson = getRequestParamJsonObj(LeetcodeRequestEnum.REQUEST_RECENTLY_EXERCISES.getValue (),userSlug);
+            // 发起请求，获得请求结果json数据
+            String postResult = HttpUtil.post (LeetcodeRequestEnum.REQUEST_RECENTLY_EXERCISES_URL.getValue(), requestJson.toJSONString (), null);
+            if (JSONUtil.isJson (postResult)) {
+                JSONObject jsonObject = JSON.parseObject (postResult);
+                String data = jsonObject.getString ("data");
+                LcUserRecentlyExerciseDetail lcUserRecentlyExerciseDetail;
+                lcUserRecentlyExerciseDetail = JSON.parseObject (data, LcUserRecentlyExerciseDetail.class);
+                if (Objects.nonNull(lcUserRecentlyExerciseDetail)) {
+                    log.info("获得用户信息成功！当前查询用户最近解题记录：{}",lcUserRecentlyExerciseDetail);
+                    logService.addLog(String.valueOf(userInfoByToken.getAccountId()), UUID.randomUUID().toString().replace("-", ""),EVAL,
+                            1 == result ? EVAL_INSERT.concat(RESULT_SUCCESS) : EVAL_INSERT.concat(RESULT_FAILED),
+                            1 == result ? LogsEnum.MESSAGE.getCode() : LogsEnum.ERROR.getCode(),
+                            LogsEnum.DEFAULT.getCode(),LogsEnum.BAIZE_EVALUATION.getCode(),LogsEnum.PUT.getCode(),null);
+                    return new BaseResult<>(lcUserRecentlyExerciseDetail);
+                }else {
+                    throw new BaseException(CodeEnum.ERROR_JSON_PARSER);
+                }
+            }else {
+                throw new BaseException(CodeEnum.ERROR_IS_NOT_JSON);
+            }
+        } catch (BaseException e) {
+            log.error("JSON解析出现错误！{}",e.getMessage());
+            throw new BaseException(CodeEnum.ERROR_JSON_PARSER);
+        }catch (IOException e){
+            log.error("网络请求出现错误！{}",e.getMessage());
+            throw new BaseException(CodeEnum.ERROR_NETWORK);
+        }
     }
 
     /**
@@ -179,4 +218,37 @@ public class LeetcodeUserInfoServiceImpl implements ILeetcodeUserInfoService {
     public BaseResult<LcUserTokenDetail> getUserTokenDetailInfo(String userSlug) {
         return null;
     }
+
+    /**
+     * 组装POST请求JSON体
+     * @param queryParam 查询参数
+     * @param userSlug 用户标记
+     * @return 返回一个JSON对象
+     */
+    private JSONObject getRequestParamJsonObj(String queryParam, String userSlug){
+        JSONObject jsonObj = new JSONObject();
+        jsonObj.put ("query", queryParam);
+        JSONObject variables = new JSONObject ();
+        variables.put ("userSlug",userSlug);
+        jsonObj.put ("variables",variables);
+        return jsonObj;
+    }
+
+
+    ///**
+    // * 获得用户信息
+    // * @return 拿到当前请求对象的信息
+    // */
+    //private CurrentLoginUserDto getUserInfo() {
+    //    RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+    //    if (Objects.nonNull(requestAttributes)) {
+    //        HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
+    //        String authorization = request.getHeader("Authorization");
+    //        if (Objects.nonNull(authorization)) {
+    //            return userFeign.getUserInfoByToken(authorization);
+    //        }
+    //        throw new BaseException(BaizeExceptionType.ERROR_UNKNOWN_USER_INFO);
+    //    }
+    //    throw new BaseException(BaizeExceptionType.ERROR_UNKNOWN_USER_INFO);
+    //}
 }

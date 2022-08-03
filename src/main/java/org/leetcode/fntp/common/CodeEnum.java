@@ -20,8 +20,7 @@ public enum CodeEnum {
     // 200xx 通用错误
     ERROR_DATA_TRANS_EXCEPTION(20001, "数据转换错误"),
     ERROR_DATABASE_FAIL(20002, "数据库操作失败"),
-    ERROR_JSON_PARSER(20003, "json结果解析错误"),
-    ERROR_JSON_PARAM(20004, "json参数解析错误"),
+
     ERROR_OPERATION_FAILED(20005, "操作失败"),
     ERROR_FILE_PARSER(20006, "文件解析错误"),
     ERROR_FILE_NOT_EXSIT(20007, "文件不存在"),
@@ -79,8 +78,7 @@ public enum CodeEnum {
     EXCEPTION_REDIS_DATA_GET_CAST(20800,"redis缓存数据异常！数据转换失败！"),
     EXCEPTION_GET_WATER_MARK(20801,"获取水印失败！"),
     EXCEPTION_GET_WATER_MARK_DATA_CAST(20802,"获取水印数据时，出现类型转换"),
-    EXCEPTION_JSON_DATA_CAST_TO_OBJECT(20803,"json数据转换异常！"),
-    EXCEPTION_JSON_NULL(20804,"JSON指定key为null"),
+
     // 关于免密操作
     EXCEPTION_WITHOUT_SECRET_USERINFO_GET(20901,"用户免密登录信息获取出错"),
     EXCEPTION_WITHOUT_SECRET_USERINFO_PRE_GET(20902,"未先获取用户信息！"),
@@ -95,6 +93,18 @@ public enum CodeEnum {
     ERROR_TEMPLATE_FILE_NOT_EXIST(20304, "模板文件[%s]不存在"),
     ERROR_TEMPLATE_PARSER(20305, "文件[%s]解析错误"),
     ERROR_PDF_DOWNLOAD(20306, "文件下载失败"),
+
+
+
+    //500XX网络相关
+    ERROR_NETWORK(50001,"网络请求异常！请检查网络后重试！"),
+
+    //506XXX JSON问题
+    ERROR_JSON_PARSER(50601, "json结果解析错误"),
+    ERROR_JSON_PARAM(50602, "json参数解析错误"),
+    EXCEPTION_JSON_DATA_CAST_TO_OBJECT(50603,"json数据转换异常！"),
+    EXCEPTION_JSON_NULL(50604,"JSON指定key为null"),
+    ERROR_IS_NOT_JSON(50605,"不属于JSON格式！"),
     ;
     /**
      * 状态码

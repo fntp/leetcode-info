@@ -1,17 +1,12 @@
 package org.leetcode.fntp.service;
 
-import cn.hutool.json.JSONNull;
 import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import okhttp3.OkHttpClient;
-import okhttp3.TlsVersion;
 import org.junit.jupiter.api.Test;
-import org.leetcode.fntp.enums.LeetcodeRequestTypeEnum;
+import org.leetcode.fntp.enums.LeetcodeRequestEnum;
 import org.leetcode.fntp.utils.HttpUtil;
 import org.leetcode.fntp.vo.recentlyexercise.LcUserRecentlyExerciseDetail;
-
-import java.io.IOException;
 
 /**
  * @author fntp
@@ -54,7 +49,7 @@ public class ITestService {
 
         try {
             JSONObject object = new JSONObject();
-            object.put ("query", LeetcodeRequestTypeEnum.REQUEST_RECENTLY_EXERCISES.getValue ());
+            object.put ("query", LeetcodeRequestEnum.REQUEST_RECENTLY_EXERCISES.getValue ());
             JSONObject variables = new JSONObject ();
             variables.put ("userSlug","charleswone");
             object.put ("variables",variables);

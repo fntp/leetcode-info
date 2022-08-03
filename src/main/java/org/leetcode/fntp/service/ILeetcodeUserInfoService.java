@@ -28,7 +28,7 @@ public interface ILeetcodeUserInfoService {
      * @param userSlug 传入一个用户标记
      * @return 返回一个用户刷题记录
      */
-    BaseResult<List<LcUserRecentlyExerciseDetail>> getLeetcodeUserRecentlyExercisesInfo(String userSlug);
+    BaseResult<LcUserRecentlyExerciseDetail> getLeetcodeUserRecentlyExercisesInfo(String userSlug);
 
     /**
      * 根据用户标记获得用户信息
