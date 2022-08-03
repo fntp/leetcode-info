@@ -56,3 +56,6 @@ Aims to build a force buckle brush question detection system
 **0009 新增力扣测试服务** **2022-08-03**
 <p>（1）新增maven依赖</p>
 <p>（2）新增构造器</p>
+
+**0010 新增全局日志服务** **2022-08-03**
+<p>（1）新增全局日志服务</p>

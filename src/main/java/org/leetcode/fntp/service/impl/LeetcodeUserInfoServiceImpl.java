@@ -1,7 +1,9 @@
 package org.leetcode.fntp.service.impl;
 
+import org.leetcode.fntp.mapper.IUserInfoMapper;
 import org.leetcode.fntp.model.BaseResult;
 import org.leetcode.fntp.service.ILeetcodeUserInfoService;
+import org.leetcode.fntp.service.ILogService;
 import org.leetcode.fntp.vo.baseinfo.LcUserBaseInfoDetail;
 import org.leetcode.fntp.vo.beatdetail.LcUserBeatDetail;
 import org.leetcode.fntp.vo.followcount.LcUserFollowDetail;
@@ -17,6 +19,7 @@ import org.leetcode.fntp.vo.usermedal.LcUserMedalInfoDetail;
 import org.leetcode.fntp.vo.willachieve.LcUserWillAchieveGoalDetail;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -26,6 +29,13 @@ import java.util.List;
  */
 @Service("leetcodeUserInfoServiceImpl")
 public class LeetcodeUserInfoServiceImpl implements ILeetcodeUserInfoService {
+
+    @Resource
+    private ILogService logService;
+
+    @Resource
+    private IUserInfoMapper userInfoMapper;
+
     /**
      * 获得用户最近刷题记录的接口
      *
@@ -34,6 +44,7 @@ public class LeetcodeUserInfoServiceImpl implements ILeetcodeUserInfoService {
      */
     @Override
     public BaseResult<List<LcUserRecentlyExerciseDetail>> getLeetcodeUserRecentlyExercisesInfo(String userSlug) {
+        var scx = "a";
         return null;
     }
 

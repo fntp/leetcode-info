@@ -27,4 +27,15 @@ mybatis-plus:
       logic-delete-field: isEnable
       logic-not-delete-value: 1
       logic-delete-value: 0
-
+secure:
+  ignored:
+    urls: #安全路径白名单
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /webjars/springfox-swagger-ui/**
