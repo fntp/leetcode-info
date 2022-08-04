@@ -62,3 +62,6 @@ Aims to build a force buckle brush question detection system
 
 **0011 新增异常处理配置** **2022-08-03**
 <p>（1）新增异常处理配置</p>
+
+**0012 新增JWT配置** **2022-08-03**
+<p>（1）新增JWT配置</p>

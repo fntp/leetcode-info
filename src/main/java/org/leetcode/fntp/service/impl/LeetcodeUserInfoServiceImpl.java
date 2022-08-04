@@ -67,10 +67,10 @@ public class LeetcodeUserInfoServiceImpl implements ILeetcodeUserInfoService {
                 lcUserRecentlyExerciseDetail = JSON.parseObject (data, LcUserRecentlyExerciseDetail.class);
                 if (Objects.nonNull(lcUserRecentlyExerciseDetail)) {
                     log.info("获得用户信息成功！当前查询用户最近解题记录：{}",lcUserRecentlyExerciseDetail);
-                    logService.addLog(String.valueOf(userInfoByToken.getAccountId()), UUID.randomUUID().toString().replace("-", ""),EVAL,
-                            1 == result ? EVAL_INSERT.concat(RESULT_SUCCESS) : EVAL_INSERT.concat(RESULT_FAILED),
-                            1 == result ? LogsEnum.MESSAGE.getCode() : LogsEnum.ERROR.getCode(),
-                            LogsEnum.DEFAULT.getCode(),LogsEnum.BAIZE_EVALUATION.getCode(),LogsEnum.PUT.getCode(),null);
+                    //logService.addLog(String.valueOf(userInfoByToken.getAccountId()), UUID.randomUUID().toString().replace("-", ""),EVAL,
+                    //        1 == result ? EVAL_INSERT.concat(RESULT_SUCCESS) : EVAL_INSERT.concat(RESULT_FAILED),
+                    //        1 == result ? LogsEnum.MESSAGE.getCode() : LogsEnum.ERROR.getCode(),
+                    //        LogsEnum.DEFAULT.getCode(),LogsEnum.BAIZE_EVALUATION.getCode(),LogsEnum.PUT.getCode(),null);
                     return new BaseResult<>(lcUserRecentlyExerciseDetail);
                 }else {
                     throw new BaseException(CodeEnum.ERROR_JSON_PARSER);
@@ -95,7 +95,32 @@ public class LeetcodeUserInfoServiceImpl implements ILeetcodeUserInfoService {
      */
     @Override
     public BaseResult<LcUserBaseInfoDetail> getLeetcodeUserBaseInfo(String userSlug) {
-        return null;
+        try {
+            // 组装请求体
+            JSONObject requestJson = getRequestParamJsonObj(LeetcodeRequestEnum.REQUEST_USER_BASE_INFO.getValue (),userSlug);
+            // 发起请求，获得请求结果json数据
+            String postResult = HttpUtil.post (LeetcodeRequestEnum.REQUEST_BASE_INFO_URL.getValue(), requestJson.toJSONString (), null);
+            if (JSONUtil.isJson (postResult)) {
+                JSONObject jsonObject = JSON.parseObject (postResult);
+                String data = jsonObject.getString ("data");
+                LcUserBaseInfoDetail lcUserBaseInfoDetail;
+                lcUserBaseInfoDetail = JSON.parseObject (data, LcUserBaseInfoDetail.class);
+                if (Objects.nonNull(lcUserBaseInfoDetail)) {
+                    log.info("获得用户信息成功！当前查询用户最近解题记录：{}",lcUserBaseInfoDetail);
+                    return new BaseResult<>(lcUserBaseInfoDetail);
+                }else {
+                    throw new BaseException(CodeEnum.ERROR_JSON_PARSER);
+                }
+            }else {
+                throw new BaseException(CodeEnum.ERROR_IS_NOT_JSON);
+            }
+        } catch (BaseException e) {
+            log.error("JSON解析出现错误！{}",e.getMessage());
+            throw new BaseException(CodeEnum.ERROR_JSON_PARSER);
+        }catch (IOException e){
+            log.error("网络请求出现错误！{}",e.getMessage());
+            throw new BaseException(CodeEnum.ERROR_NETWORK);
+        }
     }
 
     /**

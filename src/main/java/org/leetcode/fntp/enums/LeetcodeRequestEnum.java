@@ -84,6 +84,10 @@ public enum LeetcodeRequestEnum {
      *  获得用户最近刷题记录的URL请求地址
      */
     REQUEST_RECENTLY_EXERCISES_URL("https://leetcode.cn/graphql/noj-go"),
+    /**
+     * 用户基础信息请求地址
+     */
+    REQUEST_BASE_INFO_URL("https://leetcode.cn/graphql/"),
 
     ;
     /**
