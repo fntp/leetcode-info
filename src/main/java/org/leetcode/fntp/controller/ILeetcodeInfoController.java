@@ -144,7 +144,7 @@ public class ILeetcodeInfoController {
      * @param userSlug 用户标记
      * @return 返回用户即将获得的成就详情
      */
-    @GetMapping("/followDetailInfo")
+    @GetMapping("/willAchieve")
     @ApiOperation(value = "未来成就", notes = "获得用户即将获得的成就")
     public BaseResult<LcUserWillAchieveGoalDetail> getUserWillAchieveGoalDetailInfo(@RequestParam String userSlug){
         return leetcodeUserInfoService.getUserWillAchieveGoalDetailInfo(userSlug);
@@ -155,7 +155,7 @@ public class ILeetcodeInfoController {
      * @param userSlug 用户标记
      * @return  返回一个获得用户关注与被关注的数量情况
      */
-    @GetMapping("/followDetailInfo")
+    @GetMapping("/followAndBeFollowedDetailInfo")
     @ApiOperation(value = "粉丝详情", notes = "获得用户关注与被关注的数量情况")
     public BaseResult<LcUserFollowDetail> getUserFollowDetailInfo(@RequestParam String userSlug){
         return leetcodeUserInfoService.getUserFollowAndBeFollowedDetailInfo(userSlug);
@@ -166,7 +166,7 @@ public class ILeetcodeInfoController {
      * @param userSlug 用户标记
      * @return 返回一个获得用户关注的用户列表详情
      */
-    @GetMapping("/followDetailsInfo")
+    @GetMapping("/followedDetailInfo")
     @ApiOperation(value = "关注用户", notes = "获得用户关注的用户列表详情")
     public BaseResult<LcUserFollowedDetail> getUserFollowDetailsInfo(@RequestParam String userSlug,
                                                                             @RequestParam Integer pageNumber,

@@ -1,9 +1,12 @@
 # leetcode-info
 
-It is used for members of the exercise group to query the situation of leetcode exercises.
+![](D:\myOpensource\leetcode-info\xyz\images\logo.png)
 
-Aims to build a force buckle brush question detection system
+<p>It is used for members of the exercise group to query the situation of leetcode exercises.
+</p>
+<p>Aims to build a force buckle brush question detection system</p>
 
+![](D:\myOpensource\leetcode-info\xyz\images\codewithme-poster.png)
 # by fntp
 
 # fntp-更新日志
@@ -71,3 +74,6 @@ Aims to build a force buckle brush question detection system
 
 **0014 完善leetcode服务**
 <p>（1）完善leetcode服务</p>
+
+**0015 新增SpringSecurity鉴权服务**
+<p>（1）新增SpringSecurity鉴权服务</p>

@@ -27,6 +27,13 @@ mybatis-plus:
       logic-delete-field: isEnable
       logic-not-delete-value: 1
       logic-delete-value: 0
+jwt:
+  tokenHeader: Authorization
+  secret: codewithme-secret-jwt
+  salt: 999957
+  expiration: 7
+  tokenHead: 'codeWithMe'
+  sign: 'codeWithMeFntp'
 secure:
   ignored:
     urls: #安全路径白名单
