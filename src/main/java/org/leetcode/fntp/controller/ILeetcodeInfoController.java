@@ -157,7 +157,7 @@ public class ILeetcodeInfoController {
     @GetMapping("/followDetailInfo")
     @ApiOperation(value = "粉丝详情", notes = "获得用户关注与被关注的数量情况")
     public BaseResult<LcUserFollowDetail> getUserFollowDetailInfo(@RequestParam String userSlug){
-        return leetcodeUserInfoService.getUserFollowDetailInfo(userSlug);
+        return leetcodeUserInfoService.getUserFollowAndBeFollowedDetailInfo(userSlug);
     }
 
     /**

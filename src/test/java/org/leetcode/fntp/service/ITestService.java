@@ -49,7 +49,7 @@ public class ITestService {
 
         try {
             JSONObject object = new JSONObject();
-            object.put ("query", LeetcodeRequestEnum.REQUEST_RECENTLY_EXERCISES.getValue ());
+            object.put ("query", LeetcodeRequestEnum.REQUEST_QUERY_USER_RECENTLY_EXERCISES.getValue ());
             JSONObject variables = new JSONObject ();
             variables.put ("userSlug","charleswone");
             object.put ("variables",variables);

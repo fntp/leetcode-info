@@ -98,7 +98,7 @@ public interface ILeetcodeUserInfoService {
      * @param userSlug 用户标记
      * @return  返回一个获得用户关注与被关注的数量情况
      */
-    BaseResult<LcUserFollowDetail> getUserFollowDetailInfo(String userSlug);
+    BaseResult<LcUserFollowDetail> getUserFollowAndBeFollowedDetailInfo(String userSlug);
 
     /**
      * 获得用户关注的用户列表详情
