@@ -24,7 +24,7 @@ public class Next implements Serializable {
     private String obtainDate;
     private String category;
     private Config config;
-    private int id;
+    private Integer id;
     private String year;
     private String month;
     private String hoverText;

@@ -41,7 +41,7 @@ public enum LeetcodeRequestEnum {
     /**
      * 获得用户解题数量详情
      */
-    REQUEST_QUERY_USER_RESOLVE_QUESTION_COUNT_DETAIL("query userQuestionProgress($userSlug: String!){userProfileUserQuestionProgress(userSlug: $userSlug){numAcceptedQuestions {difficulty count}numFailedQuestions{difficulty count} numUntouchedQuestions{difficulty count}}}",3),
+    REQUEST_QUERY_USER_QUESTION_DETAIL("query userQuestionProgress($userSlug: String!){userProfileUserQuestionProgress(userSlug: $userSlug){numAcceptedQuestions {difficulty count}numFailedQuestions{difficulty count} numUntouchedQuestions{difficulty count}}}",3),
     /**
      * 获得用户解题击败用户详情
      */
@@ -67,7 +67,7 @@ public enum LeetcodeRequestEnum {
      */
     REQUEST_QUERY_USER_WILL_ACHIEVE_GOAL("query userBadges($userSlug: String!) { userProfileUserMedals(userSlug: $userSlug) { ...medalNodeFragment } userProfileUserNextMedal(userSlug: $userSlug) { ...medalNodeFragment } } fragment medalNodeFragment on MedalNodeV2 { name obtainDate category config { icon iconGif iconGifBackground } progress id year month }",9),
     /**
-     * （11）第十一种业务：获得
+     * （11）第十一种业务：获得关注与被关注的详情
      */
     REQUEST_QUERY_USER_FOLLOW_AND_BE_FOLLOWED_DETAIL("query followCounts($userSlug: String!) { followers(userSlug: $userSlug) { allNum } followingEntities(userSlug: $userSlug) { allNum}}",10),
     /**

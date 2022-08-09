@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author fntp
@@ -20,5 +21,5 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class LcUserBeatDetail implements Serializable {
     private static final long serialVersionUID = -2871144451285792008L;
-    private ProblemsSolvedBeatsStats problemsSolvedBeatsStats;
+    private List<ProblemsSolvedBeatsStats> problemsSolvedBeatsStats;
 }

@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author fntp
@@ -68,7 +67,7 @@ public class ILeetcodeInfoController {
      */
     @GetMapping("/useLanguageCountInfo")
     @ApiOperation(value = "语言统计", notes = "通过用户slug获得用户解决算法题的语言统计结果")
-    public BaseResult<List<LcUserLanguageCountDetail>> getUserUseLanguageCountInfo(@RequestParam String userSlug){
+    public BaseResult<LcUserLanguageCountDetail> getUserUseLanguageCountInfo(@RequestParam String userSlug){
         return leetcodeUserInfoService.getUserUseLanguageCountInfo(userSlug);
     }
 
@@ -90,7 +89,7 @@ public class ILeetcodeInfoController {
      */
     @GetMapping("/exerciseBeatDetailInfo")
     @ApiOperation(value = "击败详情", notes = "获得用户刷题击败其他用户详情")
-    public BaseResult<List<LcUserBeatDetail>> getUserExerciseBeatDetailsInfo(@RequestParam String userSlug){
+    public BaseResult<LcUserBeatDetail> getUserExerciseBeatDetailsInfo(@RequestParam String userSlug){
         return leetcodeUserInfoService.getUserExerciseBeatDetailsInfo(userSlug);
     }
 
@@ -123,8 +122,10 @@ public class ILeetcodeInfoController {
      */
     @GetMapping("/recentlyResolvesInfo")
     @ApiOperation(value = "题解信息", notes = "获得用户最近题解信息")
-    public BaseResult<LcUserRecentlyResolveDetail> getUserRecentlyResolvesInfo(@RequestParam String userSlug){
-        return leetcodeUserInfoService.getUserRecentlyResolvesInfo(userSlug);
+    public BaseResult<LcUserRecentlyResolveDetail> getUserRecentlyResolvesInfo(@RequestParam String userSlug,
+                                                                                        @RequestParam Integer first,
+                                                                                        @RequestParam Integer skip){
+        return leetcodeUserInfoService.getUserRecentlyResolvesInfo(userSlug,first,skip);
     }
 
     /**
@@ -167,19 +168,20 @@ public class ILeetcodeInfoController {
      */
     @GetMapping("/followDetailsInfo")
     @ApiOperation(value = "关注用户", notes = "获得用户关注的用户列表详情")
-    public BaseResult<LcUserFollowedDetail> getUserFollowDetailsInfo(@RequestParam String userSlug){
-        return leetcodeUserInfoService.getUserFollowDetailsInfo(userSlug);
+    public BaseResult<LcUserFollowedDetail> getUserFollowDetailsInfo(@RequestParam String userSlug,
+                                                                            @RequestParam Integer pageNumber,
+                                                                            @RequestParam Integer resultPage){
+        return leetcodeUserInfoService.getUserFollowDetailsInfo(userSlug, pageNumber, resultPage);
     }
 
     /**
      * 获得当前用户的id与token
-     * @param userSlug 用户标记
      * @return 返回一个获得当前用户的id与token
      */
     @GetMapping("/tokenDetailInfo")
     @ApiOperation(value = "token详情", notes = "获得当前用户的id与token")
-    public BaseResult<LcUserTokenDetail> getUserTokenDetailInfo(@RequestParam String userSlug){
-        return leetcodeUserInfoService.getUserTokenDetailInfo(userSlug);
+    public BaseResult<LcUserTokenDetail> getUserTokenDetailInfo(){
+        return leetcodeUserInfoService.getUserTokenDetailInfo();
     }
 
 }

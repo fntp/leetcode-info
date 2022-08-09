@@ -42,7 +42,7 @@ public interface ILeetcodeUserInfoService {
      * @param userSlug 用户标记
      * @return 返回一个用户解决问题所使用的语言统计结果
      */
-    BaseResult<List<LcUserLanguageCountDetail>> getUserUseLanguageCountInfo(String userSlug);
+    BaseResult<LcUserLanguageCountDetail> getUserUseLanguageCountInfo(String userSlug);
 
     /**
      * 获得用户刷题详情
@@ -56,7 +56,7 @@ public interface ILeetcodeUserInfoService {
      * @param userSlug 用户标记
      * @return 返回一个详情结果
      */
-    BaseResult<List<LcUserBeatDetail>> getUserExerciseBeatDetailsInfo(String userSlug);
+    BaseResult<LcUserBeatDetail> getUserExerciseBeatDetailsInfo(String userSlug);
 
     /**
      * 获得用户刷题级别荣誉详情
@@ -77,7 +77,7 @@ public interface ILeetcodeUserInfoService {
      * @param userSlug 用户标记
      * @return 返回一个基本响应
      */
-    BaseResult<LcUserRecentlyResolveDetail> getUserRecentlyResolvesInfo(String userSlug);
+    BaseResult<LcUserRecentlyResolveDetail> getUserRecentlyResolvesInfo(String userSlug, Integer first, Integer skip) ;
 
     /**
      * 获得用户一年内每月提交详情
@@ -105,13 +105,12 @@ public interface ILeetcodeUserInfoService {
      * @param userSlug 用户标记
      * @return 返回一个获得用户关注的用户列表详情
      */
-    BaseResult<LcUserFollowedDetail> getUserFollowDetailsInfo(String userSlug);
+    BaseResult<LcUserFollowedDetail> getUserFollowDetailsInfo(String userSlug, Integer pageNumber, Integer resultPage);
 
     /**
      * 获得当前用户的id与token
-     * @param userSlug 用户标记
      * @return 返回一个获得当前用户的id与token
      */
-    BaseResult<LcUserTokenDetail> getUserTokenDetailInfo(String userSlug);
+    BaseResult<LcUserTokenDetail> getUserTokenDetailInfo();
 
 }
