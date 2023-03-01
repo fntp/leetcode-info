@@ -2,24 +2,7 @@ package org.leetcode.fntp.enums;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
-/**
- * -------------------------------------------------------------------------------
- * Copyright © 2022 Leetcode-info-by-fntp. All rights reserved.
- * -------------------------------------------------------------------------------
- * Module Name: leetcode-info >>> LeetcodeRequestTypeEnum
- * Product:leetcode-info
- * Creator: puye(0303)
- * Date Created: 2022/8/2
- * Description:力扣请求枚举
- * -------------------------------------------------------------------------------
- * Modification History
- * DATE                       Name                  Description
- * -------------------------------------------------------------------------------
- * 2022/8/2                 puye(0303)                 Create
- * -------------------------------------------------------------------------------
- *
- * @author <a href="mailto:suncx@qq.com">fntp</a>
- */
+
 @Getter
 @ToString
 @AllArgsConstructor
