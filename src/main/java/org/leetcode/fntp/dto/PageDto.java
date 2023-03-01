@@ -7,24 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * -------------------------------------------------------------------------------
- * Copyright © 2022 Beijing YuXiang Software Technology Co., Ltd. All rights reserved.
- * -------------------------------------------------------------------------------
- * Module Name: leetcode-info >>> PageDTO
- * Product:1
- * Creator: puye(0303)
- * Date Created: 2022/8/3
- * Description:1
- * -------------------------------------------------------------------------------
- * Modification History
- * DATE                       Name                  Description
- * -------------------------------------------------------------------------------
- * 2022/8/3                 puye(0303)                 Create
- * -------------------------------------------------------------------------------
- *
- * @author <a href="mailto:suncx@flamelephant.com">puye(0303)</a>
- */
+
 public class PageDto<E> {
     @ApiModelProperty(
             value = "当前页码",
